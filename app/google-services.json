@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "843518749816",
+    "project_id": "api-project-843518749816"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:843518749816:android:ada34356dfa7d3db",
+        "android_client_info": {
+          "package_name": "me.wooz.mobile.android.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "843518749816-gj8o4rt06i9asmkf0qlmg41bkqmam22f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "me.wooz.mobile.android.app",
+            "certificate_hash": "0DA13D9CF04E1859717C9A05D4F3B13EBBA9FF0D"
+          }
+        },
+        {
+          "client_id": "843518749816-avgdr1dp0ablk9fvjr7t7uguvtmua9ln.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRgB44wjpu2uRc8qFmxRVSDKi9FfFzOhQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
