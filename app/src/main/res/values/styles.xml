@@ -24,6 +24,7 @@
         <item name="android:paddingBottom">10dp</item>
         <item name="android:background">@android:color/black</item>
         <item name="com_facebook_login_text">@string/fb_button_login</item>
+        <item name="com_facebook_logout_text">@string/fb_button_logout</item>
     </style>
 
 </resources>
