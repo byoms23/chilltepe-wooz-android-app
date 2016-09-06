@@ -19,22 +19,21 @@
         android:layout_marginBottom="30dp" />
 
     <com.facebook.login.widget.LoginButton
-        xmlns:fb="http://schemas.android.com/apk/res-auto"
         android:id="@+id/login_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="20dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:text="@string/login_fb" />
-        <!--fb:login_text="@string/login_fb" />-->
+        style="@style/FacebookLoginButton" />
 
     <com.google.android.gms.common.SignInButton
         android:id="@+id/sign_in_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp" />
+        android:layout_marginBottom="20dp"
+        android:drawableStart="@null"
+        android:drawableLeft="@null"
+        />
 
     <Button
         android:id="@+id/btn_login_with_email"

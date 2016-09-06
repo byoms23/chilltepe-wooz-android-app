@@ -4,7 +4,8 @@
     <!-- Facebook Sign In -->
     <string name="facebook_app_id">635405079888239</string>
     <string name="fb_login_protocol_scheme">fb635405079888239</string>
-    <string name="login_fb">Facebook</string>
+    <string name="fb_button_login">Facebook</string>
+    <string name="fb_button_logout">Salir</string>
 
     <!-- Login -->
     <string name="login_with_email">Correo Electrónico</string>
