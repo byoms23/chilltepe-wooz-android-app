@@ -17,12 +17,14 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="FacebookLoginButton" parent="com_facebook_button">
-        <item name="android:drawableLeft">@null</item>
-        <item name="android:drawableStart">@null</item>
-        <item name="android:paddingTop">10dp</item>
-        <item name="android:paddingBottom">10dp</item>
+    <style name="FacebookLoginButton" parent="Base.Widget.AppCompat.Button">
         <item name="android:background">@android:color/black</item>
+        <item name="android:drawableLeft">@drawable/fb_logo</item>
+        <item name="android:paddingBottom">12dp</item>
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingRight">-2dp</item>
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:textAllCaps">false</item>
         <item name="com_facebook_login_text">@string/fb_button_login</item>
         <item name="com_facebook_logout_text">@string/fb_button_logout</item>
     </style>

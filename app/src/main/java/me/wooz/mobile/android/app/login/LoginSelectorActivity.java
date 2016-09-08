@@ -21,6 +21,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
 
 import me.wooz.mobile.android.app.R;
@@ -58,7 +59,7 @@ public class LoginSelectorActivity extends AppCompatActivity
     private void configureFacebookLogin() {
         callbackManager = CallbackManager.Factory.create();
 
-        final LoginButton loginButton = (LoginButton) findViewById(R.id.login_button);
+        final LoginButton loginButton = (LoginButton) findViewById(R.id.btn_fb_login_button);
         loginButton.setReadPermissions("email");
 
         // Callback registration
@@ -80,7 +81,9 @@ public class LoginSelectorActivity extends AppCompatActivity
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build();
 
-        findViewById(R.id.sign_in_button).setOnClickListener(onGoogleSignInListener);
+        // Set up sign in button
+        View signInButton = findViewById(R.id.btn_google_sing_in_button);
+        signInButton.setOnClickListener(onGoogleSignInListener);
     }
 
     private void configureEmailLogin() {
@@ -140,8 +143,6 @@ public class LoginSelectorActivity extends AppCompatActivity
 
         @Override
         public void onCancel() {
-            // TODO
-            Toast.makeText(LoginSelectorActivity.this, "Facebook onCancel", Toast.LENGTH_SHORT).show();
         }
 
         @Override
