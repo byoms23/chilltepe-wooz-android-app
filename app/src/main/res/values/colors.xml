@@ -18,4 +18,24 @@
 
     <color name="colorScreenBackground">@color/colorBase50</color>
     <color name="colorText">@color/colorBase900</color>
+
+    <!-- Facebook Colors -->
+    <color name="colorFbButtonBdN">#3b579d</color>
+    <color name="colorFbButtonBgN">#3b579d</color>
+    <color name="colorFbButtonBdP">#2a468c</color>
+    <color name="colorFbButtonBgP">#2a468c</color>
+
+    <!-- Google Sign In Button -->
+    <color name="colorGoogleButtonTxtN">#737373</color>
+    <color name="colorGoogleButtonBdN">#649BF5</color>
+    <color name="colorGoogleButtonBgN">#FFFFFF</color>
+    <color name="colorGoogleButtonBdP">#3468D6</color>
+    <color name="colorGoogleButtonBgP">#EEEEEE</color>
+
+    <!-- Button Large -->
+    <color name="colorButtonLargeTxtN">#FFFFFF</color>
+    <color name="colorButtonLargeBdN">@color/colorBase700</color>
+    <color name="colorButtonLargeBgN">@color/colorBase700</color>
+    <color name="colorButtonLargeBdP">@color/colorBase800</color>
+    <color name="colorButtonLargeBgP">@color/colorBase800</color>
 </resources>
