@@ -43,8 +43,7 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/prompt_email"
                     android:inputType="textEmailAddress"
-                    android:maxLines="1"
-                    android:singleLine="true" />
+                    android:maxLines="1" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -61,8 +60,7 @@
                     android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionUnspecified"
                     android:inputType="textPassword"
-                    android:maxLines="1"
-                    android:singleLine="true" />
+                    android:maxLines="1" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -74,6 +72,26 @@
                 android:text="@string/action_sign_in"
                 android:textStyle="bold"
                 style="@style/ButtonLarge"/>
+
+            <TextView
+                android:text="@string/link_register"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_gravity="center"
+                android:textAppearance="@style/TextAppearence.App.Link"
+                android:padding="8dp"
+                android:id="@+id/tv_register" />
+
+            <TextView
+                android:text="@string/link_recover_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_gravity="center"
+                android:textAppearance="@style/TextAppearence.App.Link"
+                android:padding="8dp"
+                android:id="@+id/tv_recover_password" />
 
         </LinearLayout>
     </ScrollView>

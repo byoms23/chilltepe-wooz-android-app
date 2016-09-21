@@ -18,18 +18,23 @@
     <string name="prompt_password">Contraseña</string>
     <string name="action_sign_in">Iniciar sesión</string>
     <string name="action_sign_in_short">Iniciar sesión</string>
+    <string name="link_recover_password">Recuperar Contraseña</string>
+    <string name="link_register">Registrarse</string>
     <string name="error_invalid_email">El correo electrónico es inválido</string>
     <string name="error_invalid_password">La contraseña es demasiado corta</string>
     <string name="error_incorrect_password">La contraseña es incorrecta</string>
     <string name="error_field_required">Campo es requerido</string>
     <string name="permission_rationale">Permiso para leer contactos es requerido para recomendación de correos.</string>
 
-    <!-- Strings related to login -->
+    <!-- Strings related to Registers -->
     <string name="title_activity_register">Registrate</string>
     <string name="prompt_name">Nombre</string>
     <string name="prompt_address">Dirección (opcional)</string>
     <string name="prompt_phone_number">Teléfono (opcional)</string>
     <string name="prompt_birth_date">Fecha de nacimiento (opcional)</string>
     <string name="action_register">Registrarse</string>
+
+    <!-- Strings related to Recover Password-->
+    <string name="title_activity_recover_password">Recupera Contraseña</string>
 
 </resources>

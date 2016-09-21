@@ -44,4 +44,9 @@
         <item name="android:textColor">@color/colorAccent</item>
     </style>
 
+    <style name="TextAppearence.App.Link" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:textStyle"></item>
+    </style>
+
 </resources>

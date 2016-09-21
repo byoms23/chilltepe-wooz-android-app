@@ -67,6 +67,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="me.wooz.mobile.android.app.login.EmailLoginActivity" />
         </activity>
+        <activity
+            android:name=".login.RecoverPasswordActivity"
+            android:label="@string/title_activity_recover_password"
+            android:parentActivityName=".login.EmailLoginActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="me.wooz.mobile.android.app.login.EmailLoginActivity" />
+        </activity>
     </application>
 
 </manifest>
