@@ -73,8 +73,8 @@ public class RecoverPasswordActivity extends AppCompatActivity implements Loader
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         populateAutoComplete();
 
-        Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
-        mEmailSignInButton.setOnClickListener(new OnClickListener() {
+        Button mRecoverPasswordButton = (Button) findViewById(R.id.recover_password_button);
+        mRecoverPasswordButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 attemptLogin();

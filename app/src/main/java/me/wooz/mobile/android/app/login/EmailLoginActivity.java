@@ -19,7 +19,6 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
-import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -33,6 +32,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import me.wooz.mobile.android.app.policies.PoliciesListActivity;
 import me.wooz.mobile.android.app.R;
 
 import static android.Manifest.permission.READ_CONTACTS;
@@ -225,7 +225,7 @@ public class EmailLoginActivity extends AppCompatActivity implements LoaderCallb
 //            mAuthTask.execute((Void) null);
 //        }
 
-        Intent intent = new Intent(this, RegisterActivity.class);
+        Intent intent = new Intent(this, PoliciesListActivity.class);
         startActivity(intent);
     }
 

@@ -36,5 +36,13 @@
 
     <!-- Strings related to Recover Password-->
     <string name="title_activity_recover_password">Recupera Contraseña</string>
+    <string name="action_recover_password">Recuperar Contraseña</string>
+    <string name="title_activity_policies_list">Polizas</string>
+
+    <!-- Strings related to Add Policy -->
+    <string name="prompt_ensurance_company">Compañía</string>
+    <string name="prompt_ensurance_type">Tipo de seguro</string>
+    <string name="prompt_policy_number">No. Poliza</string>
+    <string name="action_add_policy">Agregar Poliza</string>
 
 </resources>

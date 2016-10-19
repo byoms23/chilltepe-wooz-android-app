@@ -75,6 +75,11 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="me.wooz.mobile.android.app.login.EmailLoginActivity" />
         </activity>
+        <activity
+            android:name=".policies.PoliciesListActivity"
+            android:label="@string/title_activity_policies_list"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".policies.AddPolicyActivity"></activity>
     </application>
 
 </manifest>
