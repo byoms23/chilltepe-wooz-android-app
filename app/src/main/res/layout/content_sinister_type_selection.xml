@@ -10,8 +10,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="me.wooz.mobile.android.app.policies.PoliciesListActivity"
-    tools:showIn="@layout/activity_policies_list">
+    tools:context="me.wooz.mobile.android.app.sinisters.SinisterTypeSelectionActivity"
+    tools:showIn="@layout/activity_sinister_type_selection">
 
 
     <android.support.v7.widget.RecyclerView
@@ -20,8 +20,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        tools:layout_editor_absoluteY="8dp"
-        tools:layout_editor_absoluteX="8dp"
-        android:id="@+id/recyclerView" />
+        android:id="@+id/rv_sinister_type" />
 
 </RelativeLayout>
+

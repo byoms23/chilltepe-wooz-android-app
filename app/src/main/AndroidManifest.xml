@@ -79,7 +79,12 @@
             android:name=".policies.PoliciesListActivity"
             android:label="@string/title_activity_policies_list"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".policies.AddPolicyActivity"></activity>
+        <activity android:name=".policies.AddPolicyActivity" />
+        <activity
+            android:name=".sinisters.SinisterTypeSelectionActivity"
+            android:label="@string/title_activity_sinister_type_selection"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".sinisters.NewSinisterActivity"></activity>
     </application>
 
 </manifest>

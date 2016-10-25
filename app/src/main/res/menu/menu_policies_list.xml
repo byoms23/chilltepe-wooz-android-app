@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_go_to_sinister_type_selection"
+        android:icon="@drawable/ic_done"
+        android:title="@string/action_continue"
+        app:showAsAction="always|withText"
+        android:visible="true"
+        android:enabled="true"
+        android:checkable="false" />
+
+    <!--<item android:title="Item" />-->
+
+    <!--&lt;!&ndash; Settings, should always be in the overflow &ndash;&gt;-->
+    <!--<item android:id="@+id/action_settings"-->
+        <!--android:title="@string/action_settings"-->
+        <!--app:showAsAction="never"/>-->
+
+</menu>

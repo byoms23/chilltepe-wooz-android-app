@@ -1,4 +1,4 @@
-package me.wooz.mobile.android.app.utils;
+package me.wooz.mobile.android.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;

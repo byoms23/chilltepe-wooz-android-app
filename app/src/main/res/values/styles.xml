@@ -19,7 +19,7 @@
 
     <style name="FacebookLoginButton" parent="Base.Widget.AppCompat.Button">
         <item name="android:background">@drawable/background_fb_button</item>
-        <item name="android:drawableLeft">@drawable/fb_logo</item>
+        <item name="android:drawableLeft">@drawable/logo_fb</item>
         <item name="android:paddingBottom">12dp</item>
         <item name="android:paddingLeft">16dp</item>
         <item name="android:paddingRight">-2dp</item>
