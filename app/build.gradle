@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 24
-    buildToolsVersion '24.0.3'
+    compileSdkVersion 25
+    buildToolsVersion '25.0.0'
 
     defaultConfig {
         applicationId "me.wooz.mobile.android.app"
         minSdkVersion 15
-        targetSdkVersion 24
+        targetSdkVersion 25
         versionCode 1
         versionName "1.0"
 //        jackOptions {
@@ -47,25 +47,26 @@ dependencies {
     //    compile 'com.facebook.android:account-kit-sdk:4.15.0'
     // Google Sign-In for Android
     // Jackson
-    compile 'com.android.support:appcompat-v7:24.2.1'
-    compile 'com.android.support:design:24.2.1'
+    compile ('com.weiwangcn.betterspinner:library:1.1.0') {
+        exclude group: 'com.android.support', module: 'appcompat-v7'
+    }
+    compile('com.weiwangcn.betterspinner:library-material:1.1.0') {
+        exclude group: 'com.android.support', module: 'appcompat-v7'
+    }
+
+    compile 'com.android.support:appcompat-v7:25.0.0'
+    compile 'com.android.support:design:25.0.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha9'
     compile 'com.facebook.android:facebook-android-sdk:4.15.0'
     compile 'com.google.android.gms:play-services-auth:9.6.1'
     compile 'com.fasterxml.jackson.core:jackson-core:2.8.2'
     compile 'com.fasterxml.jackson.core:jackson-databind:2.8.2'
     compile 'com.fasterxml.jackson.core:jackson-annotations:2.8.2'
-    compile 'com.android.support:support-v4:24.2.1'
+    compile 'com.android.support:support-v4:25.0.0'
+    compile 'com.android.support:recyclerview-v7:25.0.0'
+    compile 'com.google.android.gms:play-services:9.6.1'
+    compile 'com.sothree.slidinguppanel:library:3.3.1'
     testCompile 'junit:junit:4.12'
-
-    compile 'com.android.support:recyclerview-v7:24.2.1'
-    compile ('com.weiwangcn.betterspinner:library:1.1.0') {
-        exclude group: 'com.android.support', module: 'appcompat-v7'
-    }
-    compile ('com.weiwangcn.betterspinner:library-material:1.1.0') {
-        exclude group: 'com.android.support', module: 'appcompat-v7'
-    }
-
 }
 
 apply plugin: 'com.google.gms.google-services'

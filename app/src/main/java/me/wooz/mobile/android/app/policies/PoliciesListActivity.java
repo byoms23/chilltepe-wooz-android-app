@@ -15,11 +15,11 @@ import android.view.View;
 import me.wooz.mobile.android.app.R;
 import me.wooz.mobile.android.app.sinisters.SinisterTypeSelectionActivity;
 
-public class PoliciesListActivity extends AppCompatActivity
-        implements AddPolicyDialogFragment.OnAddPolicyListener {
+public class PoliciesListActivity extends AppCompatActivity {
 
     protected static final String TAG_ADD_POLICY = "ADD_POLICY";
     protected static final int CODE_ADD_POLICY = 1;
+    private MenuItem menuGoToSinisterTypeSelection;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +49,8 @@ public class PoliciesListActivity extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_policies_list, menu);
+        menuGoToSinisterTypeSelection = menu.findItem(R.id.action_go_to_sinister_type_selection);
+        menuGoToSinisterTypeSelection.setVisible(false);
         return true;
     }
 
@@ -67,7 +69,29 @@ public class PoliciesListActivity extends AppCompatActivity
     }
 
     @Override
-    public void onPolicyAdded(Uri uri) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch(requestCode) {
+            case CODE_ADD_POLICY: {
+                switch(resultCode) {
+                    case RESULT_OK: {
+                        onPolicyAdded(null);
+                        break;
+                    }
+                    default: {
+                        super.onActivityResult(requestCode, resultCode, data);
+                    }
+                }
+            }
+            default: {
+                super.onActivityResult(requestCode, resultCode, data);
+            }
+        }
+    }
 
+    public void onPolicyAdded(Uri uri) {
+        if(menuGoToSinisterTypeSelection != null) {
+            menuGoToSinisterTypeSelection.setVisible(true);
+//            menuGoToSinisterTypeSelection.getMenuInfo()..getActionView().performLongClick();
+        }
     }
 }

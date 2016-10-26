@@ -17,17 +17,17 @@ public class SplashScreenActivity extends AppCompatActivity {
 
         Intent intent = null;
         StorageManager storageManager = new StorageManager(this);
-        if(storageManager.isLoggedIn()) {
-            if(storageManager.hasPolicies()) {
-                intent = new Intent(this, SinisterTypeSelectionActivity.class);
-            } else {
+//        if(storageManager.isLoggedIn()) {
+//            if(storageManager.hasPolicies()) {
+//                intent = new Intent(this, SinisterTypeSelectionActivity.class);
+//            } else {
                 intent = new Intent(this, PoliciesListActivity.class);
-                storageManager.setHasPolicies(true);
-            }
-        } else {
-            intent = new Intent(this, LoginSelectorActivity.class);
-            storageManager.setIsLoggedIn(true);
-        }
+//                storageManager.setHasPolicies(true);
+//            }
+//        } else {
+//            intent = new Intent(this, LoginSelectorActivity.class);
+//            storageManager.setIsLoggedIn(true);
+//        }
 
         if(intent != null) {
             startActivity(intent);

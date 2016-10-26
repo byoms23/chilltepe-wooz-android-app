@@ -13,7 +13,6 @@
     tools:context="me.wooz.mobile.android.app.policies.PoliciesListActivity"
     tools:showIn="@layout/activity_policies_list">
 
-
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -22,6 +21,14 @@
         android:layout_alignParentStart="true"
         tools:layout_editor_absoluteY="8dp"
         tools:layout_editor_absoluteX="8dp"
-        android:id="@+id/recyclerView" />
+        android:id="@+id/tv_policies" />
+
+    <TextView
+        android:id="@+id/tv_empty_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true" 
+        android:text="@string/info_no_policies" />
 
 </RelativeLayout>
