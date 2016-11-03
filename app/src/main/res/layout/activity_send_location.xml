@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:gravity="bottom"
     sothree:umanoPanelHeight="68dp"
-    sothree:umanoShadowHeight="4dp">
+    sothree:umanoShadowHeight="8dp">
 
     <fragment
         android:id="@+id/map"
@@ -16,11 +16,10 @@
         android:layout_height="match_parent"
         tools:context="me.wooz.mobile.android.app.sinisters.SendLocationActivity" />
 
-    <TextView
+    <include
+        layout="@layout/content_send_location_bar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center|top"
-        android:text="The Awesome Sliding Up Panel"
-        android:textSize="16sp" />
+        android:layout_weight="0.5" />
 
 </com.sothree.slidinguppanel.SlidingUpPanelLayout>

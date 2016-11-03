@@ -19,9 +19,9 @@ public class SplashScreenActivity extends AppCompatActivity {
         StorageManager storageManager = new StorageManager(this);
 //        if(storageManager.isLoggedIn()) {
 //            if(storageManager.hasPolicies()) {
-//                intent = new Intent(this, SinisterTypeSelectionActivity.class);
+                intent = new Intent(this, SinisterTypeSelectionActivity.class);
 //            } else {
-                intent = new Intent(this, PoliciesListActivity.class);
+//                intent = new Intent(this, PoliciesListActivity.class);
 //                storageManager.setHasPolicies(true);
 //            }
 //        } else {
