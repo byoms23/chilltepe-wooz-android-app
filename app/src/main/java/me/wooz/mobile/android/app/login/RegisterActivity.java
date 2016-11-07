@@ -18,6 +18,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -28,11 +29,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
 import me.wooz.mobile.android.app.R;
+import me.wooz.mobile.android.dto.users.RegisterResponse;
+import me.wooz.mobile.android.services.ServicesManager;
+import retrofit2.Call;
+import retrofit2.Response;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
@@ -42,28 +48,35 @@ import static android.Manifest.permission.READ_CONTACTS;
 public class RegisterActivity extends AppCompatActivity
         implements LoaderCallbacks<Cursor>, DatePickerFragment.OnDateSetListener {
 
+    private static final String TAG = RegisterActivity.class.getCanonicalName();
+
     /**
      * Id to identity READ_CONTACTS permission request.
      */
     private static final int REQUEST_READ_CONTACTS = 0;
 
-    /**
-     * A dummy authentication store containing known user names and passwords.
-     * TODO: remove after connecting to a real authentication system.
-     */
-    private static final String[] DUMMY_CREDENTIALS = new String[]{
-            "foo@example.com:hello", "bar@example.com:world"
-    };
+//    /**
+//     * A dummy authentication store containing known user names and passwords.
+//     * TODO: remove after connecting to a real authentication system.
+//     */
+//    private static final String[] DUMMY_CREDENTIALS = new String[]{
+//            "foo@example.com:hello", "bar@example.com:world"
+//    };
+    private ServicesManager servicesManager;
     /**
      * Keep track of the login task to ensure we can cancel it if requested.
      */
     private UserLoginTask mAuthTask = null;
 
     // UI references.
+    private EditText mNameView;
     private AutoCompleteTextView mEmailView;
     private EditText mPasswordView;
+    private EditText mAddressView;
+    private EditText mPhoneNumberView;
+    private EditText mBirthDateView;
     private View mProgressView;
-    private View mLoginFormView;
+    private View mMainFormView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,27 +84,34 @@ public class RegisterActivity extends AppCompatActivity
         setContentView(R.layout.activity_register);
         setupActionBar();
 
+        servicesManager = new ServicesManager();
+
         // Set up the login form.
+        mNameView = (EditText) findViewById(R.id.name);
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
-        populateAutoComplete();
 
         mPasswordView = (EditText) findViewById(R.id.password);
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
                 if (id == R.id.login || id == EditorInfo.IME_NULL) {
-                    attemptLogin();
+                    attemptRegister();
+
                     return true;
                 }
                 return false;
             }
         });
 
-        Button mEmailSignInButton = (Button) findViewById(R.id.btn_register);
-        mEmailSignInButton.setOnClickListener(new OnClickListener() {
+        mAddressView = (EditText) findViewById(R.id.address);
+        mPhoneNumberView = (EditText) findViewById(R.id.phone_number);
+        mBirthDateView = (EditText) findViewById(R.id.birth_date);
+
+        Button mRegisterButton = (Button) findViewById(R.id.btn_register);
+        mRegisterButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                attemptLogin();
+                attemptRegister();
             }
         });
 
@@ -104,7 +124,7 @@ public class RegisterActivity extends AppCompatActivity
             }
         });
 
-        mLoginFormView = findViewById(R.id.login_form);
+        mMainFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
     }
 
@@ -167,7 +187,7 @@ public class RegisterActivity extends AppCompatActivity
      * If there are form errors (invalid email, missing fields, etc.), the
      * errors are presented and no actual login attempt is made.
      */
-    private void attemptLogin() {
+    private void attemptRegister() {
         if (mAuthTask != null) {
             return;
         }
@@ -177,27 +197,36 @@ public class RegisterActivity extends AppCompatActivity
         mPasswordView.setError(null);
 
         // Store values at the time of the login attempt.
+        String name = mEmailView.getText().toString();
         String email = mEmailView.getText().toString();
         String password = mPasswordView.getText().toString();
+        String address = mAddressView.getText().toString();
+        String phoneNumber = mPhoneNumberView.getText().toString();
+        String birthDate = mBirthDateView.getText().toString();
+
+        // Clear fields
+        mPasswordView.setText("");
 
         boolean cancel = false;
         View focusView = null;
 
-        // Check for a valid password, if the user entered one.
-        if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
-            mPasswordView.setError(getString(R.string.error_invalid_password));
-            focusView = mPasswordView;
+        // Check for a valid fields.
+        if(TextUtils.isEmpty(name)) {
+            mNameView.setError(getString(R.string.error_field_required));
+            focusView = mNameView;
             cancel = true;
-        }
-
-        // Check for a valid email address.
-        if (TextUtils.isEmpty(email)) {
+        } else if(TextUtils.isEmpty(email)) {
             mEmailView.setError(getString(R.string.error_field_required));
             focusView = mEmailView;
             cancel = true;
-        } else if (!isEmailValid(email)) {
+        } else if(!isEmailValid(email)) {
             mEmailView.setError(getString(R.string.error_invalid_email));
             focusView = mEmailView;
+            cancel = true;
+        } else if(TextUtils.isEmpty(password) || !isPasswordValid(password)) {
+            // Check for a valid password, if the user entered one.
+            mPasswordView.setError(getString(R.string.error_invalid_password));
+            focusView = mPasswordView;
             cancel = true;
         }
 
@@ -209,18 +238,16 @@ public class RegisterActivity extends AppCompatActivity
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             showProgress(true);
-            mAuthTask = new UserLoginTask(email, password);
-            mAuthTask.execute((Void) null);
+            mAuthTask = new UserLoginTask(name, email, password, address, phoneNumber, birthDate);
+            mAuthTask.execute();
         }
     }
 
     private boolean isEmailValid(String email) {
-        //TODO: Replace this with your own logic
         return email.contains("@");
     }
 
     private boolean isPasswordValid(String password) {
-        //TODO: Replace this with your own logic
         return password.length() > 4;
     }
 
@@ -235,12 +262,12 @@ public class RegisterActivity extends AppCompatActivity
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR2) {
             int shortAnimTime = getResources().getInteger(android.R.integer.config_shortAnimTime);
 
-            mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
-            mLoginFormView.animate().setDuration(shortAnimTime).alpha(
+            mMainFormView.setVisibility(show ? View.GONE : View.VISIBLE);
+            mMainFormView.animate().setDuration(shortAnimTime).alpha(
                     show ? 0 : 1).setListener(new AnimatorListenerAdapter() {
                 @Override
                 public void onAnimationEnd(Animator animation) {
-                    mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
+                    mMainFormView.setVisibility(show ? View.GONE : View.VISIBLE);
                 }
             });
 
@@ -256,7 +283,7 @@ public class RegisterActivity extends AppCompatActivity
             // The ViewPropertyAnimator APIs are not available, so simply show
             // and hide the relevant UI components.
             mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
-            mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
+            mMainFormView.setVisibility(show ? View.GONE : View.VISIBLE);
         }
     }
 
@@ -320,35 +347,43 @@ public class RegisterActivity extends AppCompatActivity
      */
     public class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
 
+        private final String mName;
         private final String mEmail;
         private final String mPassword;
+        private final String mAddress;
+        private final String mPhoneNumber;
+        private final String mBirthDate;
 
-        UserLoginTask(String email, String password) {
+        UserLoginTask(String name, String email, String password, String address,
+                String phoneNumber, String birthDate) {
+            mName = name;
             mEmail = email;
             mPassword = password;
+            mAddress = address;
+            mPhoneNumber = phoneNumber;
+            mBirthDate = birthDate;
         }
 
         @Override
         protected Boolean doInBackground(Void... params) {
-            // TODO: attempt authentication against a network service.
-
             try {
-                // Simulate network access.
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
+                Call<RegisterResponse> call = servicesManager.getUsersService().register(
+                    mName, mEmail, mPassword, mAddress, mPhoneNumber, mBirthDate);
+
+                Response<RegisterResponse> response = call.execute();
+                if(response.isSuccessful()) {
+                    // TODO Save token
+                    return true;
+                } else {
+                    return false;
+                }
+            } catch (IOException e) {
+                Log.e(TAG, "Error calling service.", e);
+                return false;
+            } catch (Exception e) {
+                Log.e(TAG, "Unexpected. Error calling service.", e);
                 return false;
             }
-
-            for (String credential : DUMMY_CREDENTIALS) {
-                String[] pieces = credential.split(":");
-                if (pieces[0].equals(mEmail)) {
-                    // Account exists, return true if the password matches.
-                    return pieces[1].equals(mPassword);
-                }
-            }
-
-            // TODO: register the new account here.
-            return true;
         }
 
         @Override
@@ -359,6 +394,7 @@ public class RegisterActivity extends AppCompatActivity
             if (success) {
                 finish();
             } else {
+//                Toast.makeText(RegisterActivity.this, response.message(), Toast.LENGTH_SHORT).show();
                 mPasswordView.setError(getString(R.string.error_incorrect_password));
                 mPasswordView.requestFocus();
             }
