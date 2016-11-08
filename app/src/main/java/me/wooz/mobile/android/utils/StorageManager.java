@@ -9,6 +9,7 @@ import android.content.SharedPreferences;
 public class StorageManager {
 
     private static final String APPLICATION_PREFERENCES = "app_prefs";
+    private static final String KEY_TOKEN = "tkn";
     private static final String KEY_IS_LOGGED_IN = "is_logged_in";
     private static final String KEY_HAS_POLICIES = "has_policies";
     private static final String KEY_SHOULD_GO_TO_PREFERRED_POLICY = "go_to_preferred_policy";
@@ -17,6 +18,17 @@ public class StorageManager {
 
     public StorageManager(Context context) {
         preferences = context.getSharedPreferences(APPLICATION_PREFERENCES, Context.MODE_PRIVATE);
+    }
+
+    public String getToken() {
+        return preferences.getString(KEY_TOKEN, null);
+    }
+
+    public void setToken(String token) {
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString(KEY_TOKEN, token);
+        editor.apply();
+        editor.apply();
     }
 
     public boolean isLoggedIn() {

@@ -26,12 +26,9 @@ public class SplashScreenActivity extends AppCompatActivity {
             }
         } else {
             intent = new Intent(this, LoginSelectorActivity.class);
-//            storageManager.setIsLoggedIn(true);
         }
 
-//        if(intent != null) {
-            startActivity(intent);
-//        }
+        startActivity(intent);
         finish();
     }
 }

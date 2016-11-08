@@ -6,7 +6,7 @@ import me.wooz.mobile.android.dto.BaseResponse;
  * Created by byron on 6/11/16.
  */
 
-public class RegisterResponse extends BaseResponse {
+public class LoginResponse extends BaseResponse {
 
 	private String token;
 
