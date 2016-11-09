@@ -61,6 +61,7 @@ dependencies {
     compile 'com.fasterxml.jackson.core:jackson-core:2.8.2'
     compile 'com.fasterxml.jackson.core:jackson-databind:2.8.2'
     compile 'com.fasterxml.jackson.core:jackson-annotations:2.8.2'
+    compile 'com.fasterxml.jackson.datatype:jackson-datatype-joda:2.8.2'
     compile 'com.android.support:support-v4:25.0.0'
     compile 'com.android.support:recyclerview-v7:25.0.0'
     compile 'com.google.android.gms:play-services:9.8.0'
@@ -70,6 +71,7 @@ dependencies {
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
     compile 'com.squareup.retrofit2:converter-jackson:2.1.0'
     compile 'com.squareup.okhttp3:logging-interceptor:3.4.1'
+    compile 'joda-time:joda-time:2.9.5'
 }
 
 apply plugin: 'com.google.gms.google-services'

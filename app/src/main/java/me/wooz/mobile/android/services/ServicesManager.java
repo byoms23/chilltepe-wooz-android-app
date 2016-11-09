@@ -2,6 +2,9 @@ package me.wooz.mobile.android.services;
 
 import android.content.Context;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.joda.JodaModule;
+
 import java.io.IOException;
 
 import me.wooz.mobile.android.utils.StorageManager;
@@ -22,7 +25,9 @@ public final class ServicesManager {
 	private static final String BASE_URL = "https://ensurance-events-notifier.herokuapp.com";
 
 	private StorageManager storageManager;
+	private Retrofit retrofit;
 	private UsersService usersService;
+	private InsuranceServices insuranceServices;
 
 	public ServicesManager(Context context) {
 		HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
@@ -47,18 +52,30 @@ public final class ServicesManager {
 			}
 		});
 
+		ObjectMapper mapper = new ObjectMapper();
+		mapper.registerModule(new JodaModule());
+
 		OkHttpClient client = httpClient.build();
-		Retrofit retrofit = new Retrofit.Builder()
+		this.retrofit = new Retrofit.Builder()
 				.baseUrl(BASE_URL)
 				.client(client)
-				.addConverterFactory(JacksonConverterFactory.create())
+				.addConverterFactory(JacksonConverterFactory.create(mapper))
 				.build();
 
 		this.storageManager = new StorageManager(context);
-		this.usersService = retrofit.create(UsersService.class);
 	}
 
 	public UsersService getUsersService() {
+		if(usersService == null) {
+			this.usersService = retrofit.create(UsersService.class);
+		}
 		return usersService;
+	}
+
+	public InsuranceServices getInsuranceServices() {
+		if(this.insuranceServices == null) {
+			this.insuranceServices = retrofit.create(InsuranceServices.class);
+		}
+		return insuranceServices;
 	}
 }
