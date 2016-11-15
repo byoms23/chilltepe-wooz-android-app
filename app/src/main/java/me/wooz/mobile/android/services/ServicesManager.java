@@ -27,7 +27,8 @@ public final class ServicesManager {
 	private StorageManager storageManager;
 	private Retrofit retrofit;
 	private UsersService usersService;
-	private InsuranceServices insuranceServices;
+	private InsuranceService insuranceService;
+	private PoliciesService policiesService;
 
 	public ServicesManager(Context context) {
 		HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
@@ -72,10 +73,17 @@ public final class ServicesManager {
 		return usersService;
 	}
 
-	public InsuranceServices getInsuranceServices() {
-		if(this.insuranceServices == null) {
-			this.insuranceServices = retrofit.create(InsuranceServices.class);
+	public InsuranceService getInsuranceService() {
+		if(this.insuranceService == null) {
+			this.insuranceService = retrofit.create(InsuranceService.class);
 		}
-		return insuranceServices;
+		return insuranceService;
+	}
+
+	public PoliciesService getPoliciesService() {
+		if(this.policiesService == null) {
+			this.policiesService = retrofit.create(PoliciesService.class);
+		}
+		return policiesService;
 	}
 }

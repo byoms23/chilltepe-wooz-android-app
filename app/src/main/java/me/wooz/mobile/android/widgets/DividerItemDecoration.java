@@ -1,4 +1,4 @@
-package me.wooz.mobile.android.utils;
+package me.wooz.mobile.android.widgets;
 
 import android.content.Context;
 import android.content.res.TypedArray;

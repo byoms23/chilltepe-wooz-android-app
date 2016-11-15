@@ -11,7 +11,7 @@ import retrofit2.http.GET;
  * Created by byron on 8/11/16.
  */
 
-public interface InsuranceServices {
+public interface InsuranceService {
 
 	@GET("/insurance_companies")
 	Call<List<InsuranceCompany>> getInsuranceCompanies();

@@ -18,9 +18,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="me.wooz.mobile.android.app.policies.AddPolicyDialogFragment">
+    tools:context="me.wooz.mobile.android.app.policies.AddPolicyActivity">
 
-    <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+    <me.wooz.mobile.android.widgets.WoozSpinner
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:id="@+id/sp_ensurance_company"
@@ -36,7 +36,7 @@
         app:met_floatingLabel="normal"
         android:layout_marginLeft="16dp"  />
 
-    <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+    <me.wooz.mobile.android.widgets.WoozSpinner
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:id="@+id/sp_ensurance_type"

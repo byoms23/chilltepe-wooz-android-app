@@ -43,6 +43,10 @@ public class PoliciesListActivity extends AppCompatActivity {
                 startActivityForResult(intent, CODE_ADD_POLICY);
             }
         });
+
+        if(savedInstanceState == null) {
+
+        }
     }
 
     @Override

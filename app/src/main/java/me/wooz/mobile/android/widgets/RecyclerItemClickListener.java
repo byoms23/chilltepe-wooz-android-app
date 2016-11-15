@@ -1,4 +1,4 @@
-package me.wooz.mobile.android.utils;
+package me.wooz.mobile.android.widgets;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;

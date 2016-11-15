@@ -1,7 +1,6 @@
 package me.wooz.mobile.android.app.sinisters;
 
 import android.Manifest;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -20,12 +19,9 @@ import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.location.places.PlaceLikelihood;
 import com.google.android.gms.location.places.PlaceLikelihoodBuffer;
 import com.google.android.gms.location.places.Places;
-import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
 import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 
 import java.util.ArrayList;
@@ -33,7 +29,7 @@ import java.util.List;
 
 import me.wooz.mobile.android.app.R;
 import me.wooz.mobile.android.dto.NearPlace;
-import me.wooz.mobile.android.utils.RecyclerItemClickListener;
+import me.wooz.mobile.android.widgets.RecyclerItemClickListener;
 
 public class SendLocationActivity extends FragmentActivity
         implements OnMapReadyCallback, GoogleApiClient.OnConnectionFailedListener {
@@ -118,7 +114,7 @@ public class SendLocationActivity extends FragmentActivity
 
         // Add a marker in Sydney and move the camera
 //        LatLng sydney = new LatLng(-34, 151);
-//        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
+//        mMap.addMarker(new MarkerOptions().selectedPosition(sydney).title("Marker in Sydney"));
 //        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
     }
 

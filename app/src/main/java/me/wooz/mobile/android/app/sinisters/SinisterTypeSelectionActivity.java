@@ -10,7 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import me.wooz.mobile.android.app.R;
-import me.wooz.mobile.android.utils.RecyclerItemClickListener;
+import me.wooz.mobile.android.widgets.RecyclerItemClickListener;
 
 public class SinisterTypeSelectionActivity extends AppCompatActivity {
 

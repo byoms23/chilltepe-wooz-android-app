@@ -25,7 +25,7 @@ public class InsuranceCompanyAdapter extends ArrayAdapter<InsuranceCompany> {
 	@NonNull
 	@Override
 	public View getView(int position, View convertView, @NonNull ViewGroup parent) {
-		// Get the data item for this position
+		// Get the data item for this selectedPosition
 		InsuranceCompany insuranceCompany = getItem(position);
 		// Check if an existing view is being reused, otherwise inflate the view
 		if (convertView == null) {
