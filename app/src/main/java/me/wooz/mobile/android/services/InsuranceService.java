@@ -18,5 +18,4 @@ public interface InsuranceService {
 
 	@GET("/insurance_types")
 	Call<List<InsuranceType>> getInsuranceTypes();
-
 }
