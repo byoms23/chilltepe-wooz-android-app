@@ -37,6 +37,21 @@ repositories {
     mavenCentral()
 }
 
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'org.greenrobot:greendao-gradle-plugin:3.2.1'
+    }
+}
+
+apply plugin: 'org.greenrobot.greendao'
+
+greendao {
+    schemaVersion 1
+}
+
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     // Facebook
@@ -72,6 +87,7 @@ dependencies {
     compile 'com.squareup.okhttp3:logging-interceptor:3.4.1'
     compile 'joda-time:joda-time:2.9.5'
     compile 'com.android.support.constraint:constraint-layout:1.0.0-beta3'
+    compile 'org.greenrobot:greendao:3.2.0'
 }
 
 apply plugin: 'com.google.gms.google-services'

@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
+import me.wooz.mobile.android.dto.policies.DaoSession;
 import me.wooz.mobile.android.services.ServicesManager;
 import me.wooz.mobile.android.utils.StorageManager;
 
@@ -15,6 +16,7 @@ public class BaseActivity extends AppCompatActivity {
 
 	private StorageManager storageManager;
 	private ServicesManager servicesManager;
+
 
 	@Override
 	protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -31,5 +33,9 @@ public class BaseActivity extends AppCompatActivity {
 
 	public ServicesManager getServicesManager() {
 		return servicesManager;
+	}
+
+	protected DaoSession getDaoSession() {
+		return ((WoozApplicaiton) getApplication()).getDaoSession();
 	}
 }

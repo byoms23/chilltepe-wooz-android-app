@@ -20,8 +20,8 @@ public interface PoliciesService {
 
 	@FormUrlEncoded
 	@POST("/insurance_policies")
-	Call<AddPolicyResponse> addPolicy(@Field("insurance_company_id") Integer insuranceCompanyId,
-			@Field("insurance_type_id") Integer insuranceTypeId, @Field("user_id") Integer userId,
+	Call<AddPolicyResponse> addPolicy(@Field("insurance_company_id") Long insuranceCompanyId,
+			@Field("insurance_type_id") Long insuranceTypeId, @Field("user_id") Long userId,
 			@Field("number") String number);
 
 	@GET("/insurance_policies")

@@ -224,11 +224,11 @@ public class AddPolicyActivity extends BaseActivity {
 	 */
 	public class AddPolicyTask extends AsyncTask<Void, Void, Boolean> {
 
-		private Integer insuranceCompanyId;
-		private Integer insuranceTypeId;
+		private Long insuranceCompanyId;
+		private Long insuranceTypeId;
 		private String policyNumber;
 
-		public AddPolicyTask(Integer insuranceCompanyId, Integer insuranceTypeId,
+		public AddPolicyTask(Long insuranceCompanyId, Long insuranceTypeId,
 				String policyNumber) {
 			this.insuranceCompanyId = insuranceCompanyId;
 			this.insuranceTypeId = insuranceTypeId;

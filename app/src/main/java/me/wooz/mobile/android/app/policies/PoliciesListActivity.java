@@ -20,6 +20,7 @@ import me.wooz.mobile.android.app.BaseActivity;
 import me.wooz.mobile.android.app.R;
 import me.wooz.mobile.android.app.sinisters.SinisterTypeSelectionActivity;
 import me.wooz.mobile.android.dto.policies.AddPolicyResponse;
+import me.wooz.mobile.android.dto.policies.DaoSession;
 import me.wooz.mobile.android.dto.policies.Policy;
 import retrofit2.Call;
 import retrofit2.Response;
@@ -125,6 +126,11 @@ public class PoliciesListActivity extends BaseActivity {
 				Response<List<Policy>> response = call.execute();
 				if(response.isSuccessful()) {
 					// TODO Add policy to dao storage
+					List<Policy> policies = response.body();
+					DaoSession daoSession = getDaoSession();
+					daoSession.getPolicyDao().deleteAll();
+					daoSession.getPolicyDao().insertInTx(policies);
+					getStorageManager().setHasPolicies(policies.size() > 0);
 					return true;
 				}
 			} catch (IOException e) {
